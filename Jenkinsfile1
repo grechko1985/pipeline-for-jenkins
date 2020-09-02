@@ -1,1 +1,34 @@
-
+pipeline {
+    agent any
+    
+    environment {
+        PROJECT_NAME = "Neptun"
+        OWNER_NAME = "Sergey Grechko"
+    }
+    
+    stages {
+        stage('1. Build') {
+            steps {
+                echo 'Build'
+            }
+        }
+        stage('2. Test') {
+            steps {
+                echo 'Test'
+                sh "ls -la"
+                echo "Hello ${OWNER_NAME}"
+                echo "Project name ois ${PROJECT_NAME}"
+            }
+        }
+        stage('3. Deploy') {
+            steps {
+                echo 'Deploy'
+                sh '''
+                   echo "Line 1"
+                   echo "Line 2"
+                '''
+                echo "pyhon --version"
+            }
+        }
+    }
+}
